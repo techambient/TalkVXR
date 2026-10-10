@@ -7,15 +7,15 @@
 
 <div align="center">
 
-<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" width="180" alt="Ambient HybridAI">
+<img src="app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" width="180" alt="Ambient TalkVXR">
 
-# OpenHelper AI (formerly Ambient HybridAI)
+# TalkVXR AI (formerly OpenHelper AI)
 
-### Open source AI chatbot powered by Ambient HybridAI Intelligence 2.0
+### Open source AI chatbot powered by TalkVXR v1 Flash
 
 Modern, beautiful and free unlimited latest model usage AI assistant for Windows devices, Android phones, tablets and foldables.
 
-[![License](https://img.shields.io/github/license/techambient/HybridAI?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/github/license/techambient/TalkVXR?style=for-the-badge)](LICENSE)
 [![Platform](https://img.shields.io/badge/Android-10%2B-34A853?style=for-the-badge)]()
 [![Material 3](https://img.shields.io/badge/Material%203-Expressive-4285F4?style=for-the-badge)]()
 
@@ -25,17 +25,17 @@ Modern, beautiful and free unlimited latest model usage AI assistant for Windows
 
 # 📖 About
 
-OpenHelper is a modern open source AI chatbot designed for Android and Windows.
+TalkVXR is a modern open source AI chatbot designed for Android and Windows.
 
-Powered by **Ambient HybridAI Intelligence 2.0**, it provides a fast, beautiful and intuitive AI experience through a clean Material 3 Expressive interface.
+Powered by **TalkVXR v1 Flash**, it provides a fast, beautiful and intuitive AI experience through a clean Material 3 Expressive interface.
 
-Whether you're asking questions, writing documents, generating ideas or solving problems, Ambient HybridAI delivers an elegant AI experience designed specifically for Android and Windows. 
+Whether you're asking questions, writing documents, generating ideas or solving problems, Ambient TalkVXR delivers an elegant AI experience designed specifically for Android and Windows. 
 
 ---
 
 # ✨ Features
 
-- 🤖 Ambient HybridAI Intelligence 2.0
+- 🤖 TalkVXR v1 Flash
 - 💬 Modern AI Chatbot
 - 🎨 Google Material 3 Expressive UI
 - 📱 Optimised for phones
@@ -76,14 +76,12 @@ Whether you're asking questions, writing documents, generating ideas or solving 
 ---
 
 # 🔍 Reviews, Blogs & Discoveries
-* <b>AI Indigo (Special Thanks)</b>: [https://aiindigo.com/tool/openhelper-ai-chatbot](https://aiindigo.com/tool/openhelper-ai-chatbot)
-* Daily Artifact: [https://dailyartifact.ai/story/free-openhelper-ai-chatbot-v2-preview-is-coming-with-many-features-f60h?list=topic%3Allm-and-text-generation](https://dailyartifact.ai/story/free-openhelper-ai-chatbot-v2-preview-is-coming-with-many-features-f60h?list=topic%3Allm-and-text-generation)
-* Microsoft Bing: [https://www.bing.com/search?q=OpenHelper+AI](https://www.bing.com/search?q=OpenHelper+AI)
-* Google AI Search: [https://www.google.com/search?q=OpenHelper+AI](https://www.google.com/search?q=OpenHelper+AI)
-* DuckDuckGo: [https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=OpenHelper+AI](https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=OpenHelper+AI)
-* Yahoo! Search: [https://search.yahoo.com/search?p=OpenHelper+AI](https://search.yahoo.com/search?p=OpenHelper+AI)
-* Yandex: [https://yandex.com/search?text=OpenHelper+AI](https://yandex.com/search?text=OpenHelper+AI)
-* Brave Search: [https://search.brave.com/search?q=OpenHelper+AI](https://search.brave.com/search?q=OpenHelper+AI)
+* Microsoft Bing: [https://www.bing.com/search?q=TalkVXR+AI](https://www.bing.com/search?q=TalkVXR+AI)
+* Google AI Search: [https://www.google.com/search?q=TalkVXR+AI](https://www.google.com/search?q=TalkVXR+AI)
+* DuckDuckGo: [https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=TalkVXR](https://duckduckgo.com/?ia=web&origin=funnel_home_website&t=h_&q=TalkVXR)
+* Yahoo! Search: [https://search.yahoo.com/search?p=TalkVXR+AI](https://search.yahoo.com/search?p=TalkVXR+AI)
+* Yandex: [https://yandex.com/search?text=TalkVXR+AI](https://yandex.com/search?text=TalkVXR+AI)
+* Brave Search: [https://search.brave.com/search?q=TalkVXR+AI](https://search.brave.com/search?q=TalkVXR+AI)
 
 ---
 
@@ -94,7 +92,7 @@ Download the latest APK from the Releases page.
 Or build from source:
 
 ```bash
-git clone https://github.com/techambient/HybridAI.git
+git clone https://github.com/techambient/TalkVXR.git
 ```
 
 Open the project using Android Studio / Electron (Windows version) and press **Run**.
@@ -115,9 +113,9 @@ Open the project using Android Studio / Electron (Windows version) and press **R
 
 ---
 
-# 🧠 Ambient HybridAI Intelligence 2.0
+# 🧠 TalkVXR v1 Flash (Developed on October 10, 2026)
 
-Ambient HybridAI Intelligence 2.0 is the intelligence engine behind Ambient HybridAI.
+TalkVXR v1 Flash is the intelligence engine behind TalkVXR.
 
 Features include:
 
@@ -132,7 +130,7 @@ Features include:
 
 # 🎨 Design
 
-Ambient HybridAI follows Google's latest Material Design guidelines.
+TalkVXR follows Google's latest Material Design guidelines.
 
 - Material 3 Expressive
 - Material You
@@ -143,9 +141,9 @@ Ambient HybridAI follows Google's latest Material Design guidelines.
 
 ---
 
-# ❤️ Why OpenHelper?
+# ❤️ Why TalkVXR?
 
-Unlike many AI applications, Ambient HybridAI focuses on:
+Unlike many AI applications, TalkVXR focuses on:
 
 - Clean UI
 - Performance
@@ -171,11 +169,7 @@ You can help by:
 
 # ⭐ Support
 
-If you enjoy Ambient HybridAI, please consider giving this repository a ⭐ and give some donations to help keep it alive!
-
-* **Solana (SOL / USDC):** `EME9M9cSy9FvfHvcx2gMPkp1H5Dj4YaKufPRsAyon8Tf`
-* **Bitcoin (Taproot):** `bc1pguvpjudf9gr2lyjcf4s9ttvzushgu0hqhr2p7fwqzsz4977kajcqemvned`
-* **Bitcoin (Native Segwit):** `bc1qwfjwytw8lehg20es373cx2ulr3el99rt9uurz5`
+If you enjoy TalkVXR, please consider giving this repository a ⭐ to help keep it alive!! 
 
 ---
 
