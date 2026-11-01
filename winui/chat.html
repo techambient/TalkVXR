@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="system">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TalkVXR (formerly OpenHelper AI)</title>
+<script>(function(){var d=document.documentElement,t='system';try{t=localStorage.getItem('ambient_theme_preference')||'system'}catch(e){}window.__mode=function(t){d.dataset.mode=t==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):t;d.dataset.theme=t};window.__mode(t)})()</script>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<script>
+tailwind.config={theme:{extend:{colors:{bg:'var(--bg)',layer:'var(--layer)',card:'var(--card)',hover:'var(--hover)',stroke:'var(--stroke)',txt:'var(--txt)',sub:'var(--sub)',accent:'var(--accent)'},borderRadius:{ctl:'4px',card:'8px'},fontFamily:{sans:['Segoe UI Variable Text','Segoe UI Variable','Segoe UI','system-ui','sans-serif']}}}}
+</script>
+<style>
+:root{color-scheme:light dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--decel:cubic-bezier(.1,.9,.2,1);--std:cubic-bezier(0,0,0,1);
+--bg:light-dark(#f3f3f3,#202020);--layer:light-dark(#f9f9f9,#272727);--card:light-dark(#ffffffb3,#ffffff0d);
+--ctl:light-dark(#ffffffb3,#ffffff0f);--ctl-h:light-dark(#f9f9f980,#ffffff15);--ctl-p:light-dark(#f9f9f94d,#ffffff08);
+--hover:light-dark(#0000000f,#ffffff0f);--press:light-dark(#00000009,#ffffff0a);
+--stroke:light-dark(#0000000f,#ffffff15);--stroke-b:light-dark(#00000029,#ffffff12);
+--txt:light-dark(#1a1a1a,#ffffff);--sub:light-dark(#0000009b,#ffffffc8);
+--accent:light-dark(#005fb8,#60cdff);--acc-h:light-dark(#1a6dbf,#54b9e8);--acc-p:light-dark(#3a80c6,#4a9dc4);
+--acc-b:light-dark(#00000040,#00000066);--onacc:light-dark(#ffffff,#000000);--onacc-p:light-dark(#ffffffb3,#00000080);
+--crit:light-dark(#c42b1c,#ff99a4);--crit-bg:light-dark(#fde7e9,#442726);--crit-b:light-dark(#c42b1c33,#ff99a433);
+--dlg:light-dark(#f9f9f9,#2b2b2b);--dfoot:light-dark(#f3f3f3,#202020);--fly:light-dark(#fcfcfce6,#2c2c2cd9);
+--seg:light-dark(#ffffff,#ffffff17);--tbf:light-dark(#ffffff,#1f1f1f);--inv:light-dark(#ffffff,#000000);--m1:light-dark(#cfe0f7a0,#1e3a6a55);--m2:light-dark(#e2d4f5a0,#4a2a6a40);--ibbg:light-dark(#f6f6f6,#2f2f2f)}
+:root[data-mode=light]{color-scheme:light;--bg:#f3f3f3;--layer:#f9f9f9;--card:#ffffffb3;--ctl:#ffffffb3;--ctl-h:#f9f9f980;--ctl-p:#f9f9f94d;--hover:#0000000f;--press:#00000009;--stroke:#0000000f;--stroke-b:#00000029;--txt:#1a1a1a;--sub:#0000009b;--accent:#005fb8;--acc-h:#1a6dbf;--acc-p:#3a80c6;--acc-b:#00000040;--onacc:#ffffff;--onacc-p:#ffffffb3;--crit:#c42b1c;--crit-bg:#fde7e9;--crit-b:#c42b1c33;--dlg:#f9f9f9;--dfoot:#f3f3f3;--fly:#fcfcfce6;--seg:#ffffff;--tbf:#ffffff;--inv:#ffffff;--m1:#cfe0f7a0;--m2:#e2d4f5a0;--ibbg:#f6f6f6;--smoke:#0000004d}
+:root[data-mode=dark]{color-scheme:dark;--bg:#202020;--layer:#272727;--card:#ffffff0d;--ctl:#ffffff0f;--ctl-h:#ffffff15;--ctl-p:#ffffff08;--hover:#ffffff0f;--press:#ffffff0a;--stroke:#ffffff15;--stroke-b:#ffffff12;--txt:#ffffff;--sub:#ffffffc8;--accent:#60cdff;--acc-h:#54b9e8;--acc-p:#4a9dc4;--acc-b:#00000066;--onacc:#000000;--onacc-p:#00000080;--crit:#ff99a4;--crit-bg:#442726;--crit-b:#ff99a433;--dlg:#2b2b2b;--dfoot:#202020;--fly:#2c2c2cd9;--seg:#ffffff17;--tbf:#1f1f1f;--inv:#000000;--m1:#1e3a6a55;--m2:#4a2a6a40;--ibbg:#2f2f2f;--smoke:#00000099}
+html,body,#root{height:100%}
+body{margin:0;background:radial-gradient(60% 55% at 0% 0%,var(--m1),transparent),radial-gradient(55% 55% at 100% 100%,var(--m2),transparent),var(--bg);background-attachment:fixed;color:var(--txt);font:14px/20px 'Segoe UI Variable Text','Segoe UI Variable','Segoe UI',system-ui,-apple-system,sans-serif;overflow:hidden;-webkit-font-smoothing:antialiased}
+button,input{font:inherit;color:inherit}button,.nav,.btn{cursor:default;user-select:none}
+:focus-visible{outline:2px solid var(--txt);outline-offset:1px;box-shadow:0 0 0 1px var(--inv)}
+h1,h2{font-family:'Segoe UI Variable Display','Segoe UI Variable','Segoe UI',system-ui,sans-serif}
+.text-xs{font-family:'Segoe UI Variable Small','Segoe UI Variable','Segoe UI',system-ui,sans-serif}
+.thin::-webkit-scrollbar{width:14px}.thin::-webkit-scrollbar-thumb{background:var(--sub);background-clip:content-box;border:5px solid transparent;border-radius:7px;min-height:40px}.thin::-webkit-scrollbar-thumb:hover{border-width:3px}
+@supports not selector(::-webkit-scrollbar){.thin{scrollbar-width:thin;scrollbar-color:var(--sub) transparent}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:32px;padding:0 12px;border-radius:4px;border:1px solid var(--stroke);border-bottom-color:var(--stroke-b);background:var(--ctl);white-space:nowrap;text-decoration:none;transition:background-color .083s linear,transform .1s var(--std)}
+.btn:hover{background:var(--ctl-h)}.btn:active{background:var(--ctl-p);color:var(--sub)}
+.btn.acc{background:var(--accent);color:var(--onacc);border-color:var(--accent);border-bottom-color:var(--acc-b)}
+.btn.acc:hover{background:var(--acc-h)}.btn.acc:active{background:var(--acc-p);color:var(--onacc-p);transform:scale(.97)}
+.btn.crit{background:var(--crit);color:var(--onacc);border-color:transparent}.btn.crit:hover{filter:brightness(1.1)}
+.btn.sub{background:transparent;border-color:transparent}.btn.sub:hover{background:var(--hover)}.btn.sub:active{background:var(--press)}
+.btn.sm{height:28px;padding:0 8px;font-size:12px;gap:6px}.btn.ico{width:32px;padding:0}
+.nav{position:relative;display:flex;align-items:center;gap:12px;height:40px;padding:0 6px 0 12px;margin:0 4px 2px;border-radius:4px;transition:background-color .083s linear}
+button.nav{width:calc(100% - 8px);border:0;background:none;text-align:left}
+.nav:hover{background:var(--hover)}.nav:active{background:var(--press)}.nav.sel{background:var(--hover)}
+.opt.sel::before{content:"";position:absolute;left:0;top:50%;width:3px;height:16px;margin-top:-8px;border-radius:2px;background:var(--accent);animation:pill .3s var(--decel)}
+@keyframes pill{from{transform:scaleY(0)}}
+.more{opacity:0;width:28px;height:28px;flex:none;display:grid;place-items:center;border:0;border-radius:4px;background:transparent}
+.more:hover{background:var(--hover)}.nav:hover .more,.nav:focus-within .more,.nav.sel .more{opacity:1}
+.pane{width:288px;flex:none;overflow:hidden;transition:width .3s var(--decel)}.pane.closed{width:48px}.lbl{transition:opacity .15s linear}.pane.closed .lbl{opacity:0}
+.pane-in{width:288px}
+.scrim{display:none}
+@media(max-width:767px){
+.pane{position:absolute;inset:0 auto 0 0;z-index:30;background:var(--bg);box-shadow:8px 0 24px #00000040;transition:transform .3s var(--decel)}
+.pane.closed{width:288px;transform:translateX(-100%)}.pane.closed .lbl{opacity:1}.pane.closed .pane-in{visibility:hidden;transition:visibility 0s .3s}
+.scrim{display:block;position:absolute;inset:0;z-index:20;background:#0000004d;animation:fade .25s linear}}
+.seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);padding:2px;border-radius:4px;background:var(--hover);border:1px solid var(--stroke)}
+.seg i{position:absolute;top:2px;bottom:2px;left:2px;width:calc((100% - 4px)/3);border-radius:3px;background:var(--seg);box-shadow:0 1px 2px #0000001f;transition:transform .25s var(--decel)}
+.seg i::after{content:"";position:absolute;left:30%;right:30%;bottom:0;height:2px;border-radius:1px;background:var(--accent)}
+.seg button{position:relative;height:28px;border:0;border-radius:3px;background:transparent;display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--sub)}
+.seg button.on{color:var(--txt)}
+.tb{flex:1;min-width:0;height:40px;padding:0 12px;border-radius:4px;border:1px solid var(--stroke);border-bottom-color:var(--stroke-b);background:var(--ctl);outline:0;transition:background-color .083s linear,box-shadow .167s var(--std)}
+.tb:hover{background:var(--ctl-h)}.tb:focus{background:var(--tbf);border-bottom-color:var(--accent);box-shadow:inset 0 -1px 0 var(--accent)}
+.tb::placeholder{color:var(--sub)}
+.ib{display:grid;grid-template-rows:1fr;transition:grid-template-rows .25s var(--std),opacity .2s linear}
+.ib.out{grid-template-rows:0fr;opacity:0}.ib>div{overflow:hidden;min-height:0}
+.ibc{display:flex;align-items:center;gap:12px;min-height:48px;padding:4px 4px 4px 16px;border-radius:4px;border:1px solid var(--stroke);background:var(--card)}
+.msg{line-height:22px;animation:ent .5s var(--decel) both}@keyframes ent{0%{opacity:0;transform:translateY(40px)}35%{opacity:1}100%{transform:none}}
+.msg.user{align-self:flex-end;max-width:80%;padding:10px 16px;border-radius:8px;border:1px solid var(--stroke);background:var(--card);white-space:pre-wrap;word-break:break-word}
+.msg.bot{align-self:flex-start;max-width:90%}
+.msg.err{padding:12px 16px;border-radius:8px;border:1px solid var(--crit-b);background:var(--crit-bg);color:var(--crit)}
+.tag{display:inline-flex;align-items:center;height:24px;padding:0 8px;border-radius:4px;font-size:12px;color:var(--sub);background:var(--hover);border:1px solid var(--stroke)}
+.think{display:inline-flex;align-items:center;gap:12px;padding:12px 16px;border-radius:8px;border:1px solid var(--stroke);background:var(--card);color:var(--sub)}
+.ring{animation:rot 2s linear infinite}.ring circle{stroke-dasharray:4 47;animation:dash 1.5s ease-in-out infinite}
+@keyframes rot{to{transform:rotate(360deg)}}@keyframes dash{0%{stroke-dasharray:2 49;stroke-dashoffset:0}50%{stroke-dasharray:32 19;stroke-dashoffset:-12}100%{stroke-dasharray:2 49;stroke-dashoffset:-50}}
+.flyout{position:fixed;z-index:60;min-width:160px;padding:4px;border-radius:8px;background:var(--fly);backdrop-filter:blur(30px) saturate(125%);-webkit-backdrop-filter:blur(30px) saturate(125%);border:1px solid var(--stroke);box-shadow:0 8px 16px #00000024;animation:fly .25s var(--decel)}
+@keyframes fly{0%{opacity:0;clip-path:inset(0 0 100% 0);transform:translateY(-10px)}30%{opacity:1}100%{clip-path:inset(-24px);transform:none}}
+.mi{display:flex;align-items:center;gap:12px;width:100%;height:36px;padding:0 12px;border:0;border-radius:4px;background:transparent;text-align:left}
+.mi:hover{background:var(--hover)}.mi:active{background:var(--press)}.crit-t{color:var(--crit)}
+.ov{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:var(--smoke);animation:fade .167s linear}
+.ov.out{opacity:0;transition:opacity .11s linear}
+.dlg{width:min(440px,92vw);border-radius:8px;overflow:hidden;background:var(--dlg);border:1px solid var(--stroke);box-shadow:0 32px 64px #00000047,0 2px 21px #00000042;animation:dlg .25s var(--decel)}
+.ov.out .dlg{transform:scale(.97);transition:transform .11s linear}
+@keyframes dlg{0%{opacity:0;transform:scale(1.06)}40%{opacity:1}100%{transform:none}}@keyframes fade{from{opacity:0}}
+.dfoot{display:flex;gap:8px;padding:24px;background:var(--dfoot);border-top:1px solid var(--stroke)}.dfoot .btn{flex:1}
+.opt{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;margin-bottom:8px;border-radius:8px;border:1px solid var(--stroke);background:var(--card);color:inherit;text-decoration:none;transition:background-color .083s linear}
+a.opt:hover{background:var(--hover)}.opt.dis>span{opacity:.5}
+.ind{position:absolute;left:4px;top:0;width:3px;height:16px;border-radius:2px;background:var(--accent);pointer-events:none}
+.ind.a{transition:top .167s var(--decel),height .167s var(--decel),opacity .1s linear}
+.pbar{position:relative;height:0;z-index:2}.pbar i{position:absolute;top:-3px;height:3px;border-radius:2px;background:var(--accent);animation:pb 1.8s cubic-bezier(.4,0,.6,1) infinite}
+@keyframes pb{0%{left:-35%;width:35%}60%{left:65%;width:35%}100%{left:100%;width:10%}}
+@keyframes ibin{from{opacity:0;transform:translateY(-12px)}}.ib{animation:ibin .45s var(--decel)}.ibc{background:var(--ibbg)}
+@keyframes pop{from{opacity:0;transform:scale(.5)}}.pop{animation:pop .3s var(--decel)}
+@keyframes pulse{50%{opacity:.35}}.btn.on,.btn.on:hover{color:var(--accent)}.btn.on svg{animation:pulse 1s ease-in-out infinite}
+.flyout::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+.cbtn{display:none}
+@media(min-width:768px){.pane.closed .cbtn{display:flex}.pane.closed .pn{display:none}.pane.closed .nav{width:40px}}
+@media(hover:hover){[data-tip]{position:relative}[data-tip]::after{content:attr(data-tip);position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);padding:5px 8px;border-radius:4px;border:1px solid var(--stroke);background:var(--fly);backdrop-filter:blur(30px);box-shadow:0 4px 8px #00000024;font-size:12px;line-height:16px;font-weight:400;white-space:nowrap;pointer-events:none;opacity:0;z-index:70;transition:opacity .1s linear}[data-tip]:hover::after{opacity:1;transition-delay:.6s}.tu::after{top:auto;bottom:calc(100% + 6px)}.tr::after{left:auto;right:0;transform:none}.tl::after{left:0;transform:none}}
+@keyframes entu{0%{opacity:0;transform:translate(28px,24px) scale(.96)}35%{opacity:1}100%{transform:none}}.msg.user{animation-name:entu}
+@keyframes navin{0%{opacity:0;transform:translateX(-28px)}35%{opacity:1}100%{transform:none}}.ni{animation:navin .45s var(--decel) backwards}
+.opt{animation:ent .5s var(--decel) backwards}
+.nav,.opt{transition:background-color .083s linear,transform .1s var(--std)}.nav:active,.opt:active{transform:scale(.98)}
+@keyframes mi{from{opacity:0;transform:translateY(-8px)}}.flyout .mi{animation:mi .25s var(--decel) backwards}.flyout .mi:nth-child(2){animation-delay:.04s}
+@keyframes snd{0%{transform:none}40%{transform:translate(12px,-12px);opacity:0}41%{transform:translate(-12px,12px);opacity:0}100%{transform:none;opacity:1}}.snd{animation:snd .45s var(--decel)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/htm@3.1.1/dist/htm.umd.js"></script>
+<script>
+const {useState,useEffect,useLayoutEffect,useRef}=React;
+const html=htm.bind(React.createElement);
+const KEY='talkvxr_winui_sessions',TK='ambient_theme_preference';
+const API='https://script.google.com/macros/s/AKfycbyV9WSlTJg78Cs4jb6lbSwXhRFfdnlxxcFmTSfJ2DMHqrRqHiO5kavT4ZRYBSd1OGK9/exec';
+const G='Hi, TalkVXR user! How can I help you today?';
+const mk=()=>({id:'chat-'+Date.now()+Math.random().toString(36).slice(2,5),title:'New Chat',msgs:[{role:'bot',text:G,source:'AI Initialization',prompt:G}]});
+const mob=()=>innerWidth<768;
+const init0=(()=>{try{const a=JSON.parse(localStorage.getItem(KEY));if(Array.isArray(a)&&a.length)return a}catch(e){}return[mk()]})();
+const P={plus:'M12 5v14M5 12h14',menu:'M4 6h16M4 12h16M4 18h16',send:'M21 3 10 14M21 3l-7 18-4-7-7-4z',
+copy:'M8 8h11v13H8zM16 8V3H5v13h3',spk:'M4 9v6h4l5 4V5L8 9zM16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12',stop:'M7 7h10v10H7z',
+search:'M11 4a7 7 0 1 0 0 14 7 7 0 0 0 0-14zM21 21l-5-5',close:'M6 6l12 12M18 6 6 18',check:'M5 12.5l4.5 4.5L19 7',
+chat:'M5 4h14a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H10l-5 4v-4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z',
+chip:'M7 7h10v10H7zM10 10h4v4h-4zM9 3v4M15 3v4M9 17v4M15 17v4M3 9h4M3 15h4M17 9h4M17 15h4',
+edit:'M4 20h4L19 9l-4-4L4 16zM13 7l4 4',trash:'M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13M10 11v6M14 11v6',more:'M5 12h.01M12 12h.01M19 12h.01',
+sun:'M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4',
+moon:'M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z',auto:'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 3v18'};
+const I=({n,s=16,w=1.5,c=''})=>html`<svg width=${s} height=${s} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth=${w} strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className=${'flex-none '+c}><path d=${P[n]}/></svg>`;
+
+function Dialog({title,children,ok,okLabel='OK',cancelLabel='Cancel',danger,onClose}){
+ const [out,setOut]=useState(false);
+ const done=f=>{setOut(true);setTimeout(f,110)};
+ useEffect(()=>{const k=e=>{if(e.key==='Escape')done(onClose);else if(e.key==='Enter'&&ok&&!/^(INPUT|BUTTON|A)$/.test(e.target.tagName))done(ok)};addEventListener('keydown',k);return()=>removeEventListener('keydown',k)});
+ return html`<div className=${'ov'+(out?' out':'')} onMouseDown=${e=>e.target===e.currentTarget&&done(onClose)}>
+  <div className="dlg" role="dialog" aria-modal="true" aria-label=${title}>
+   <div className="p-6"><h2 className="text-xl font-semibold mb-4" style=${{lineHeight:'28px'}}>${title}</h2>${children}</div>
+   <div className="dfoot">${ok&&html`<button className=${'btn '+(danger?'crit':'acc')} onClick=${()=>done(ok)}>${okLabel}</button>`}<button className="btn" onClick=${()=>done(onClose)}>${cancelLabel}</button></div>
+  </div></div>`}
+
+function Rename({s,onSave,onClose}){
+ const [v,setV]=useState(s.title);
+ return html`<${Dialog} title="Rename this chat" ok=${()=>onSave(v)} okLabel="Rename" onClose=${onClose}>
+  <input autoFocus className="tb w-full" value=${v} onChange=${e=>setV(e.target.value)} onFocus=${e=>e.target.select()} onKeyDown=${e=>e.key==='Enter'&&onSave(v)}/><//>`}
+
+function Menu({m,onRename,onDelete,onClose}){
+ useEffect(()=>{const k=e=>e.key==='Escape'&&onClose();addEventListener('click',onClose);addEventListener('keydown',k);addEventListener('resize',onClose);return()=>{removeEventListener('click',onClose);removeEventListener('keydown',k);removeEventListener('resize',onClose)}},[]);
+ return html`<div className="flyout" style=${{left:Math.min(m.x,innerWidth-176),top:Math.min(m.y,innerHeight-96)}} onContextMenu=${e=>e.preventDefault()}>
+  <button className="mi" onClick=${onRename}><${I} n="edit"/>Rename</button>
+  <button className="mi crit-t" onClick=${onDelete}><${I} n="trash"/>Delete</button></div>`}
+
+function Msg({m,k,sp,onSpeak,d}){
+ const [c,setC]=useState(false);
+ const copy=()=>{try{navigator.clipboard.writeText(m.text).then(()=>{setC(true);setTimeout(()=>setC(false),1800)}).catch(()=>{})}catch(e){}};
+ if(m.role==='user')return html`<div className="msg user" style=${{animationDelay:d+'ms'}}>${m.text}</div>`;
+ const on=sp===k;
+ return html`<div className=${'msg bot'+(m.error?' err':'')} style=${{animationDelay:d+'ms'}}>
+  <div className="whitespace-pre-wrap break-words">${m.text}</div>
+  <div className="flex flex-wrap items-center gap-2 mt-3">
+   <span className="tag">${m.source}</span>
+   <button className="btn sub sm" onClick=${copy}><${I} key=${c?'c':'n'} c=${c?'pop':''} n=${c?'check':'copy'} s=${14}/>${c?'Copied!':'Copy'}</button>
+   <button className=${'btn sub sm'+(on?' on':'')} onClick=${()=>onSpeak(k,m.text)}><${I} n=${on?'stop':'spk'} s=${14}/>${on?'Stop':'Hear'}</button>
+   <button className="btn sub sm" onClick=${()=>m.prompt&&window.open('https://google.com/search?q='+encodeURIComponent(m.prompt),'_blank','noopener')}><${I} n="search" s=${14}/>Verify</button>
+  </div></div>`}
+
+const MODELS=[['TalkVXR v1 Flash','Active Default Model',null],['TalkVXR v1 Reason','Active Model','reason.html'],['TalkVXR v1 Prime','Active Model','prime.html'],['TalkVXR v1 Extended','Upcoming Model',null,1]];
+const THEMES=[['system','Auto','auto'],['light','Light','sun'],['dark','Dark','moon']];
+
+function App(){
+ const [S,setS]=useState(init0),[cur,setCur]=useState(init0[init0.length-1].id);
+ const [theme,setTheme]=useState(()=>{try{return localStorage.getItem(TK)||'system'}catch(e){return'system'}});
+ const [text,setText]=useState(''),[pend,setPend]=useState({}),[pane,setPane]=useState(()=>!mob());
+ const [menu,setMenu]=useState(null),[dlg,setDlg]=useState(null),[ib,setIb]=useState('open'),[sp,setSp]=useState(null);
+ const bx=useRef(),inp=useRef(),lst=useRef(),tm=useRef(),pt=useRef(null);const [ind,setInd]=useState({t:0,h:16,o:0,a:0}),[fresh,setFresh]=useState(true),[sn,setSn]=useState(0);
+ const cs=S.find(s=>s.id===cur)||S[0];
+ const stop=()=>{try{speechSynthesis.cancel()}catch(e){}setSp(null)};
+ useEffect(()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}},[S]);
+ useEffect(()=>{__mode(theme);try{localStorage.setItem(TK,theme)}catch(e){}if(theme!=='system')return;const q=matchMedia('(prefers-color-scheme: dark)'),f=()=>__mode('system');q.addEventListener('change',f);return()=>q.removeEventListener('change',f)},[theme]);
+ useEffect(()=>{inp.current&&inp.current.focus()},[]);
+ useEffect(()=>{stop()},[cur]);
+ useLayoutEffect(()=>{const el=lst.current&&lst.current.querySelector('.nav.sel');clearTimeout(tm.current);if(!el){pt.current=null;setInd(i=>({...i,o:0}));return}const n=el.offsetTop+12,p=pt.current;pt.current=n;if(p===null||p===n){setInd({t:n,h:16,o:1,a:p===null?0:1});return}setInd({t:Math.min(p,n),h:Math.abs(n-p)+16,o:1,a:1});tm.current=setTimeout(()=>setInd({t:n,h:16,o:1,a:1}),170)},[S,cur,pane]);
+ useEffect(()=>{setFresh(true);const t=setTimeout(()=>setFresh(false),700);return()=>clearTimeout(t)},[cur]);
+ useEffect(()=>{bx.current&&bx.current.scrollTo({top:bx.current.scrollHeight,behavior:'smooth'})},[cs.msgs.length,pend[cur]]);
+ const speak=(k,t)=>{if(sp===k)return stop();stop();try{const u=new SpeechSynthesisUtterance(t),f=()=>setSp(x=>x===k?null:x);u.onend=f;u.onerror=f;setSp(k);speechSynthesis.speak(u)}catch(e){setSp(null)}};
+ const add=(id,m)=>setS(a=>a.map(s=>s.id===id?{...s,msgs:[...s.msgs,m]}:s));
+ const newChat=()=>{const s=mk();setS(a=>[...a,s]);setCur(s.id);if(mob())setPane(false);else inp.current&&inp.current.focus()};
+ const pick=id=>{setCur(id);if(mob())setPane(false)};
+ const rename=(id,t)=>{t=t.trim();if(t)setS(a=>a.map(s=>s.id===id?{...s,title:t}:s))};
+ const del=id=>{const r=S.filter(s=>s.id!==id);if(!r.length){const n=mk();setS([n]);setCur(n.id)}else{setS(r);if(cur===id)setCur(r[r.length-1].id)}};
+ const closeIb=()=>{setIb('out');setTimeout(()=>setIb('gone'),260)};
+ async function send(){
+  const q=text.trim();if(!q)return;const sid=cur;setText('');setSn(n=>n+1);
+  setS(a=>a.map(s=>s.id===sid?{...s,title:s.title==='New Chat'?(q.length>22?q.substring(0,22)+'...':q):s.title,msgs:[...s.msgs,{role:'user',text:q}]}:s));
+  setPend(p=>({...p,[sid]:(p[sid]||0)+1}));
+  let m;
+  try{const r=await fetch(API+'?q='+encodeURIComponent(q),{method:'GET',redirect:'follow'});const d=await r.json();
+   m={role:'bot',text:String(d.answer),source:'Source: '+String(d.source||'unknown').replace(/_/g,' '),prompt:q}}
+  catch(e){console.error(e);m={role:'bot',text:'Critical connection error.',source:'Network Failure',prompt:q,error:true}}
+  setPend(p=>({...p,[sid]:Math.max(0,(p[sid]||1)-1)}));add(sid,m)}
+ const ti=THEMES.findIndex(t=>t[0]===theme);
+ return html`<div className="h-full flex flex-col">
+  <div className="h-8 flex items-center gap-2 pl-1 pr-3 flex-none">
+   <button className="btn sub ico tl" data-tip="Toggle navigation pane" style=${{width:40}} aria-label="Toggle navigation pane" onClick=${()=>setPane(p=>!p)}><${I} n="menu"/></button>
+   <span className="w-4 h-4 rounded-ctl flex-none" style=${{background:'linear-gradient(135deg,#4285f4,#a8c7fa 50%,#9b51e0)'}}></span>
+   <span className="text-xs">TalkVXR</span>
+  </div>
+  <div className="flex-1 min-h-0 flex relative">
+   ${pane&&html`<div className="scrim" onClick=${()=>setPane(false)}></div>`}
+   <aside className=${'pane'+(pane?'':' closed')}><div className="pane-in flex flex-col h-full">
+    <div className="pt-1"><button className="nav" title="New Chat" onClick=${newChat}><${I} n="plus"/><span className="lbl whitespace-nowrap">New Chat</span></button></div>
+    <div className="lbl px-4 pt-4 pb-1 text-xs font-semibold text-sub whitespace-nowrap">Recent Chats</div>
+    <div ref=${lst} className="relative flex-1 min-h-0 overflow-y-auto thin pt-1"><i className=${'ind'+(ind.a?' a':'')} style=${{top:ind.t,height:ind.h,opacity:ind.o}}></i>
+     ${[...S].reverse().map((s,i)=>html`<div key=${s.id} style=${{animationDelay:Math.min(i,8)*35+'ms'}} className=${'nav ni'+(s.id===cur?' sel':'')} role="button" title=${s.title} tabIndex=${0} onClick=${()=>pick(s.id)}
+       onKeyDown=${e=>e.key==='Enter'&&pick(s.id)} onContextMenu=${e=>{e.preventDefault();setMenu({x:e.clientX,y:e.clientY,id:s.id})}}>
+       <${I} n="chat"/><span className="lbl truncate flex-1">${s.title}</span>
+       <button className="more lbl" aria-label="More options" onClick=${e=>{e.stopPropagation();const r=e.currentTarget.getBoundingClientRect();setMenu({x:r.left,y:r.bottom+4,id:s.id})}}><${I} n="more" w=${3}/></button></div>`)}
+    </div>
+    <button className="nav cbtn" title=${'Theme: '+THEMES[ti][1]} onClick=${()=>setTheme(THEMES[(ti+1)%3][0])}><${I} n=${THEMES[ti][2]}/></button>
+    <div className="p-3 border-t border-stroke pn">
+     <div className="text-xs font-semibold text-sub mb-2">Theme</div>
+     <div className="seg" role="radiogroup"><i style=${{transform:`translateX(${ti*100}%)`}}></i>
+      ${THEMES.map(t=>html`<button key=${t[0]} role="radio" aria-checked=${theme===t[0]} className=${theme===t[0]?'on':''} onClick=${()=>setTheme(t[0])}><${I} n=${t[2]} s=${14}/>${t[1]}</button>`)}</div>
+    </div>
+   </div></aside>
+   <main className="flex-1 min-w-0 flex flex-col bg-layer border-t border-l border-stroke rounded-tl-card overflow-hidden">
+    <header className="px-4 sm:px-10 py-4 border-b border-stroke flex-none">
+     <h1 className="text-xl font-semibold" style=${{lineHeight:'28px'}}>TalkVXR v1 (formerly OpenHelper AI)</h1>
+     <p className="text-xs text-sub">Free & Open Source AI Chatbot</p>
+    </header>
+    <div className="pbar">${pend[cur]>0&&html`<i></i>`}</div>
+    ${ib!=='gone'&&html`<div className=${'ib'+(ib==='out'?' out':'')}><div><div className="px-4 sm:px-10 pt-3"><div className="ibc">
+     <span className="w-4 h-4 rounded-full bg-accent flex-none grid place-items-center text-[11px] font-bold" style=${{color:'var(--onacc)'}}>i</span>
+     <span className="flex-1 py-1">TalkVXR v2 Experimental is coming with many exciting features...</span>
+     <a href="v2.html" className="btn sm">Sneak Peek</a>
+     <button className="btn sub ico" aria-label="Close message" onClick=${closeIb}><${I} n="close"/></button>
+    </div></div></div></div>`}
+    <div ref=${bx} className="flex-1 min-h-0 overflow-y-auto thin px-4 sm:px-10 py-6">
+     <div className="max-w-3xl w-full mx-auto flex flex-col gap-6">
+      ${cs.msgs.map((m,i)=>html`<${Msg} key=${cs.id+i} m=${m} k=${cs.id+'-'+i} sp=${sp} onSpeak=${speak} d=${fresh?Math.min(i,8)*45:0}/>`)}
+      ${pend[cur]>0&&html`<div className="msg bot"><div className="think"><svg className="ring" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="var(--accent)" strokeWidth="2.5" strokeLinecap="round"><circle cx="10" cy="10" r="8"/></svg>Thinking...</div></div>`}
+     </div>
+    </div>
+    <div className="px-4 sm:px-10 pt-2 pb-1 flex gap-2 items-center flex-none">
+     <input ref=${inp} className="tb" type="text" placeholder="Ask TalkVXR v1..." value=${text} onChange=${e=>setText(e.target.value)} onKeyDown=${e=>{if(e.key==='Enter'&&!e.nativeEvent.isComposing)send()}}/>
+     <button className="btn tu" data-tip="Select AI model" style=${{height:40}} onClick=${()=>setDlg({t:'model'})}><${I} n="chip"/><span className="hidden sm:inline">Model</span></button>
+     <button className="btn acc tu tr" data-tip="Send" style=${{height:40,width:48,padding:0}} aria-label="Send message" onClick=${send}><${I} key=${sn} c=${sn?'snd':''} n="send" s=${18}/></button>
+    </div>
+    <div className="text-xs text-sub text-center px-4 pb-4 pt-1 select-none">Your chats may used to improve our models. TalkVXR is AI and may make mistakes.</div>
+   </main>
+  </div>
+  ${menu&&html`<${Menu} m=${menu} onClose=${()=>setMenu(null)} onRename=${()=>{setDlg({t:'rename',id:menu.id});setMenu(null)}} onDelete=${()=>{setDlg({t:'del',id:menu.id});setMenu(null)}}/>`}
+  ${dlg&&dlg.t==='model'&&html`<${Dialog} title="AI Model Selection" cancelLabel="Close" onClose=${()=>setDlg(null)}>
+   ${MODELS.map((m,i)=>{const El=m[2]?'a':'div';return html`<${El} key=${m[0]} href=${m[2]||undefined} className=${'opt'+(i===0?' sel':'')+(m[3]?' dis':'')} style=${{animationDelay:80+i*45+'ms'}}>
+    <span><span className="block font-semibold">${m[0]}</span><span className="block text-xs text-sub">${m[1]}</span></span>
+    ${i===0&&html`<span className="text-accent"><${I} n="check" s=${18} w=${2}/></span>`}<//>`})}<//>`}
+  ${dlg&&dlg.t==='rename'&&S.find(s=>s.id===dlg.id)&&html`<${Rename} s=${S.find(s=>s.id===dlg.id)} onClose=${()=>setDlg(null)} onSave=${v=>{rename(dlg.id,v);setDlg(null)}}/>`}
+  ${dlg&&dlg.t==='del'&&S.find(s=>s.id===dlg.id)&&html`<${Dialog} title="Delete chat?" danger okLabel="Delete" ok=${()=>{del(dlg.id);setDlg(null)}} onClose=${()=>setDlg(null)}>
+   <p className="text-sub">Are you sure you want to delete "${S.find(s=>s.id===dlg.id).title}"?</p><//>`}
+ </div>`}
+ReactDOM.createRoot(document.getElementById('root')).render(html`<${App}/>`);
+</script>
+</body>
+</html>
